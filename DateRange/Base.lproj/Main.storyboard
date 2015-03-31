@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7518.3"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="viewtest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ic-rd-YMq" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jt-9D-4gr">
+                                        <rect key="frame" x="139" y="51" width="323" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="skL-F9-r26"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgN-2V-V74" userLabel="Date Range Container View">
+                                <rect key="frame" x="0.0" y="80" width="600" height="72"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="z5L-1V-WZG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TgN-2V-V74" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="3Aa-Rl-ek2"/>
+                            <constraint firstItem="6Ic-rd-YMq" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="O8T-kb-MNL"/>
+                            <constraint firstItem="6Ic-rd-YMq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Wc8-3v-5NC"/>
+                            <constraint firstAttribute="trailing" secondItem="TgN-2V-V74" secondAttribute="trailing" id="ZfA-KI-5JP"/>
+                            <constraint firstItem="TgN-2V-V74" firstAttribute="top" secondItem="6Ic-rd-YMq" secondAttribute="bottom" id="gfe-Ym-sRA"/>
+                            <constraint firstAttribute="trailing" secondItem="6Ic-rd-YMq" secondAttribute="trailing" id="yid-Dr-mfP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateRangeContainerView" destination="TgN-2V-V74" id="JPz-bt-vwm"/>
+                        <outlet property="periodLabel" destination="7jt-9D-4gr" id="h3Q-CB-ybv"/>
+                        <outlet property="upperView" destination="6Ic-rd-YMq" id="1ag-QY-rYD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
