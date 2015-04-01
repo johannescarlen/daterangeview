@@ -38,6 +38,7 @@ class DateRangeView: UIView {
 
     private var scrollView: UIScrollView!
     private var selectedRangeView: UIView!
+    private var todayButton: UIButton!
 
     private var startOffset: Int = 0
 
@@ -50,6 +51,8 @@ class DateRangeView: UIView {
     private let selectedHeight: CGFloat = 72
 
     private let yPosition: CGFloat = -10
+
+    private let todayRadius: CGFloat = 15
 
     private var months = [Int: CGFloat]()
     private let monthNames: [String] = ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]
@@ -64,6 +67,18 @@ class DateRangeView: UIView {
         selectedRangeView.backgroundColor = UIColor(205, 227, 240)
         selectedRangeView.layer.cornerRadius = selectedHeight / 4;
         scrollView.addSubview(selectedRangeView)
+
+        todayButton = UIButton(frame: CGRectZero)
+        todayButton.backgroundColor = UIColor.whiteColor()
+        todayButton.layer.cornerRadius = todayRadius
+        todayButton.layer.borderColor = UIColor(19, 114, 181).CGColor;
+        todayButton.layer.borderWidth = 1;
+        todayButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Light", size: 10)
+        todayButton.setTitleColor(UIColor(19, 114, 181), forState: .Normal)
+        todayButton.setTitle("Idag", forState: UIControlState.Normal)
+        todayButton.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+        todayButton.tag = today()
+        scrollView.addSubview(todayButton)
 
         addSubview(scrollView)
     }
@@ -108,6 +123,10 @@ class DateRangeView: UIView {
         var scrollSize = CGSizeMake(xPosition + monthButtonWidth, frame.height)
         scrollView.contentSize = scrollSize
 
+        // Today button
+        var thisMonthsOffset = offset(yearMonth: 201504)
+        self.todayButton.frame = CGRectMake(thisMonthsOffset + monthButtonWidth / 2 - todayRadius, 30, todayRadius * 2, todayRadius * 2)
+
         if (startOffset != 0) {
             setContentOffset(yearMonth: startOffset)
             startOffset = 0
@@ -133,8 +152,13 @@ class DateRangeView: UIView {
             selectedEnd = selected! + 12
         } else {
             if (selected >= selectedStart && selected <= selectedEnd || selectedStart == 0) {
-                selectedStart = selected!
-                selectedEnd = selected!
+                if (selectedStart == selectedEnd && selectedStart != 0) {
+                    selectedStart = 0
+                    selectedEnd = 0
+                } else {
+                    selectedStart = selected!
+                    selectedEnd = selected!
+                }
             } else {
                 if (selected > selectedEnd) {
                     selectedEnd = selected!
@@ -143,14 +167,14 @@ class DateRangeView: UIView {
                 }
             }
         }
-        let xPosition = months[selectedStart]!
-        let width = months[selectedEnd]! + monthButtonWidth - xPosition
-
-        var selectedFrame = CGRectMake(xPosition, yPosition - 24, width, selectedHeight)
+        var selectedFrame = CGRectZero
+        if (selectedStart != 0) {
+            let xPosition = months[selectedStart]!
+            let width = months[selectedEnd]! + monthButtonWidth - xPosition
+            selectedFrame = CGRectMake(xPosition, yPosition - 24, width, selectedHeight)
+        }
         selectedRangeView.frame = selectedFrame
-
         delegate!.dateSelected(start: selectedStart, end: selectedEnd)
-
     }
 
     func setContentOffset(#year: Int, month: Int) {
@@ -159,13 +183,26 @@ class DateRangeView: UIView {
     }
 
     private func setContentOffset(#yearMonth: Int) {
-        let offset = yearMonth
-        if let x = months[offset] {
-            let xPosition = x - frame.width / 2 + monthButtonWidth
-            scrollView.setContentOffset(CGPointMake(xPosition, 0), animated: false)
+        var xPosition = offset(yearMonth: yearMonth)
+        if xPosition != 0 {
+            xPosition = xPosition - frame.width / 2 + monthButtonWidth
+            self.scrollView.setContentOffset(CGPointMake(CGFloat(xPosition), 0), animated: false)
         } else {
-            startOffset = offset
+            self.startOffset = yearMonth
         }
     }
 
+    private func offset(#yearMonth: Int) -> CGFloat {
+        var resultOffset: CGFloat = 0
+        if let x = months[yearMonth] {
+            resultOffset = x
+        }
+        return resultOffset
+    }
+
+    private func today() -> Int {
+        let flags: NSCalendarUnit = .CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear
+        let components = NSCalendar.currentCalendar().components(flags, fromDate: NSDate())
+        return components.year * 100 + components.month
+    }
 }

@@ -55,14 +55,19 @@ class ViewController: UIViewController, DateRangeDelegate {
     func dateSelected(#start: Int, end: Int) {
         println("Start: \(start) End:\(end)")
         // Format 201503
-        let formatter = NSDateFormatter()
-        let month1Index = (start % 100)
-        let month1: String = formatter.monthSymbols[month1Index - 1] as! String
-        var selectedString = "\(month1) \((start-month1Index)/100)"
-        if(start != end) {
-            let month2Index = (end % 100)
-            let month2: String = formatter.monthSymbols[month2Index - 1] as! String
-            selectedString += " - \(month2) \((end-month2Index)/100)"
+        var selectedString : (String)
+        if(start == end && start == 0) {
+            selectedString = "No filter"
+        } else {
+            let formatter = NSDateFormatter()
+            let month1Index = (start % 100)
+            let month1: String = formatter.monthSymbols[month1Index - 1] as! String
+            selectedString = "\(month1) \((start-month1Index)/100)"
+            if(start != end) {
+                let month2Index = (end % 100)
+                let month2: String = formatter.monthSymbols[month2Index - 1] as! String
+                selectedString += " - \(month2) \((end-month2Index)/100)"
+            }
         }
         self.periodLabel!.text = selectedString
     }
