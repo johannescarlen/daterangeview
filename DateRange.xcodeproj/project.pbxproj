@@ -16,16 +16,6 @@
 		8DC0745F1ACACB3C007AFE3B /* DateRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0745D1ACACB3C007AFE3B /* DateRangeView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		8DC0744D1ACACA6B007AFE3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8DC0742F1ACACA6B007AFE3B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC074361ACACA6B007AFE3B;
-			remoteInfo = DateRange;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		8DC074371ACACA6B007AFE3B /* DateRange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateRange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC0743B1ACACA6B007AFE3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,21 +24,12 @@
 		8DC074411ACACA6B007AFE3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8DC074431ACACA6B007AFE3B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8DC074461ACACA6B007AFE3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		8DC0744C1ACACA6B007AFE3B /* DateRangeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateRangeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DC074511ACACA6B007AFE3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC0745C1ACACB3C007AFE3B /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		8DC0745D1ACACB3C007AFE3B /* DateRangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8DC074341ACACA6B007AFE3B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8DC074491ACACA6B007AFE3B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				8DC074391ACACA6B007AFE3B /* DateRange */,
-				8DC0744F1ACACA6B007AFE3B /* DateRangeTests */,
 				8DC074381ACACA6B007AFE3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				8DC074371ACACA6B007AFE3B /* DateRange.app */,
-				8DC0744C1ACACA6B007AFE3B /* DateRangeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,33 +65,9 @@
 				8DC074401ACACA6B007AFE3B /* Main.storyboard */,
 				8DC074431ACACA6B007AFE3B /* Images.xcassets */,
 				8DC074451ACACA6B007AFE3B /* LaunchScreen.xib */,
-				8DC0743A1ACACA6B007AFE3B /* Supporting Files */,
-			);
-			path = DateRange;
-			sourceTree = "<group>";
-		};
-		8DC0743A1ACACA6B007AFE3B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				8DC0743B1ACACA6B007AFE3B /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8DC0744F1ACACA6B007AFE3B /* DateRangeTests */ = {
-			isa = PBXGroup;
-			children = (
-				8DC074501ACACA6B007AFE3B /* Supporting Files */,
-			);
-			path = DateRangeTests;
-			sourceTree = "<group>";
-		};
-		8DC074501ACACA6B007AFE3B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8DC074511ACACA6B007AFE3B /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = DateRange;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,39 +90,19 @@
 			productReference = 8DC074371ACACA6B007AFE3B /* DateRange.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8DC0744B1ACACA6B007AFE3B /* DateRangeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8DC074591ACACA6B007AFE3B /* Build configuration list for PBXNativeTarget "DateRangeTests" */;
-			buildPhases = (
-				8DC074481ACACA6B007AFE3B /* Sources */,
-				8DC074491ACACA6B007AFE3B /* Frameworks */,
-				8DC0744A1ACACA6B007AFE3B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8DC0744E1ACACA6B007AFE3B /* PBXTargetDependency */,
-			);
-			name = DateRangeTests;
-			productName = DateRangeTests;
-			productReference = 8DC0744C1ACACA6B007AFE3B /* DateRangeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		8DC0742F1ACACA6B007AFE3B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Wildberry;
 				TargetAttributes = {
 					8DC074361ACACA6B007AFE3B = {
 						CreatedOnToolsVersion = 6.3;
-					};
-					8DC0744B1ACACA6B007AFE3B = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 8DC074361ACACA6B007AFE3B;
 					};
 				};
 			};
@@ -185,7 +120,6 @@
 			projectRoot = "";
 			targets = (
 				8DC074361ACACA6B007AFE3B /* DateRange */,
-				8DC0744B1ACACA6B007AFE3B /* DateRangeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,13 +132,6 @@
 				8DC074421ACACA6B007AFE3B /* Main.storyboard in Resources */,
 				8DC074471ACACA6B007AFE3B /* LaunchScreen.xib in Resources */,
 				8DC074441ACACA6B007AFE3B /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8DC0744A1ACACA6B007AFE3B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,22 +149,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8DC074481ACACA6B007AFE3B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8DC0744E1ACACA6B007AFE3B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8DC074361ACACA6B007AFE3B /* DateRange */;
-			targetProxy = 8DC0744D1ACACA6B007AFE3B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8DC074401ACACA6B007AFE3B /* Main.storyboard */ = {
@@ -280,6 +192,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -348,6 +261,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DateRange/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.wildberry.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -358,41 +272,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DateRange/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.wildberry.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		8DC0745A1ACACA6B007AFE3B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DateRangeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateRange.app/DateRange";
-			};
-			name = Debug;
-		};
-		8DC0745B1ACACA6B007AFE3B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DateRangeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateRange.app/DateRange";
 			};
 			name = Release;
 		};
@@ -413,15 +294,6 @@
 			buildConfigurations = (
 				8DC074571ACACA6B007AFE3B /* Debug */,
 				8DC074581ACACA6B007AFE3B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8DC074591ACACA6B007AFE3B /* Build configuration list for PBXNativeTarget "DateRangeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8DC0745A1ACACA6B007AFE3B /* Debug */,
-				8DC0745B1ACACA6B007AFE3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -26,7 +26,7 @@ import UIKit
 
 protocol DateRangeDelegate {
     // Använder formatet yyyyMM för att definiera start och slut. MM är 1...12
-    func dateSelected(#start: Int, end: Int)
+    func dateSelected(start start: Int, end: Int)
 }
 
 class DateRangeView: UIView {
@@ -76,14 +76,14 @@ class DateRangeView: UIView {
         todayButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Light", size: 10)
         todayButton.setTitleColor(UIColor(19, 114, 181), forState: .Normal)
         todayButton.setTitle("Idag", forState: UIControlState.Normal)
-        todayButton.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+        todayButton.addTarget(self, action: #selector(DateRangeView.btnPressed(_:)), forControlEvents: .TouchUpInside)
         todayButton.tag = today()
         scrollView.addSubview(todayButton)
 
         addSubview(scrollView)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -97,8 +97,8 @@ class DateRangeView: UIView {
         scrollView.frame = CGRectMake(0, 0, self.frame.width, self.frame.height)
         var xPosition: CGFloat = monthButtonWidth
 
-        for (var currentYear = startYear; currentYear <= endYear; currentYear++) {
-            var btn: UIButton = UIButton(frame: CGRectMake(xPosition, yPosition, yearButtonWidth, buttonHeight))
+        for currentYear in startYear...endYear {
+            let btn: UIButton = UIButton(frame: CGRectMake(xPosition, yPosition, yearButtonWidth, buttonHeight))
             xPosition += (yearButtonWidth + (monthButtonWidth - yearButtonWidth) / 2)
             btn.backgroundColor = UIColor.headerBackgroundColor()
             btn.layer.cornerRadius = yearButtonWidth / 2;
@@ -107,24 +107,24 @@ class DateRangeView: UIView {
             btn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             btn.titleLabel!.textColor = UIColor.whiteColor()
             btn.setTitle("\(currentYear)", forState: UIControlState.Normal)
-            btn.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+            btn.addTarget(self, action: #selector(DateRangeView.btnPressed(_:)), forControlEvents: .TouchUpInside)
             btn.tag = currentYear * 100
 
             scrollView.addSubview(btn)
 
             for month in 1 ... 12 {
                 self.scrollView.addSubview(createMonthButton(currentYear, month: month, xPosition: xPosition))
-                var key = currentYear * 100 + month
+                let key = currentYear * 100 + month
                 months[key] = xPosition
                 xPosition += monthButtonWidth
             }
         }
 
-        var scrollSize = CGSizeMake(xPosition + monthButtonWidth, frame.height)
+        let scrollSize = CGSizeMake(xPosition + monthButtonWidth, frame.height)
         scrollView.contentSize = scrollSize
 
         // Today button
-        var thisMonthsOffset = offset(yearMonth: 201504)
+        let thisMonthsOffset = offset(yearMonth: 201605)
         self.todayButton.frame = CGRectMake(thisMonthsOffset + monthButtonWidth / 2 - todayRadius, 30, todayRadius * 2, todayRadius * 2)
 
         if (startOffset != 0) {
@@ -134,11 +134,11 @@ class DateRangeView: UIView {
     }
 
     private func createMonthButton(year: Int, month: Int, xPosition: CGFloat) -> UIButton {
-        var btn: UIButton = UIButton(frame: CGRectMake(xPosition, yPosition, monthButtonWidth, buttonHeight))
+        let btn: UIButton = UIButton(frame: CGRectMake(xPosition, yPosition, monthButtonWidth, buttonHeight))
         btn.titleLabel!.font = UIFont(name: "HelveticaNeue-Light", size: 14)
         btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btn.setTitle(monthNames[month - 1], forState: UIControlState.Normal)
-        btn.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+        btn.addTarget(self, action: #selector(DateRangeView.btnPressed(_:)), forControlEvents: .TouchUpInside)
         btn.tag = year * 100 + month
         return btn
     }
@@ -177,12 +177,12 @@ class DateRangeView: UIView {
         delegate!.dateSelected(start: selectedStart, end: selectedEnd)
     }
 
-    func setContentOffset(#year: Int, month: Int) {
+    func setContentOffset(year year: Int, month: Int) {
         let offset = year * 100 + month
         setContentOffset(yearMonth: offset)
     }
 
-    private func setContentOffset(#yearMonth: Int) {
+    private func setContentOffset(yearMonth yearMonth: Int) {
         var xPosition = offset(yearMonth: yearMonth)
         if xPosition != 0 {
             xPosition = xPosition - frame.width / 2 + monthButtonWidth
@@ -192,7 +192,7 @@ class DateRangeView: UIView {
         }
     }
 
-    private func offset(#yearMonth: Int) -> CGFloat {
+    private func offset(yearMonth yearMonth: Int) -> CGFloat {
         var resultOffset: CGFloat = 0
         if let x = months[yearMonth] {
             resultOffset = x
@@ -201,7 +201,7 @@ class DateRangeView: UIView {
     }
 
     private func today() -> Int {
-        let flags: NSCalendarUnit = .CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear
+        let flags: NSCalendarUnit = [.Day, .Month, .Year]
         let components = NSCalendar.currentCalendar().components(flags, fromDate: NSDate())
         return components.year * 100 + components.month
     }

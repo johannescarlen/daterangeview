@@ -39,7 +39,7 @@ class ViewController: UIViewController, DateRangeDelegate {
         upperView.backgroundColor = UIColor(22, 122, 182)
         dateRangeView = DateRangeView(frame: CGRectMake(0, 80, self.view.frame.width, 200))
         dateRangeView.delegate = self
-        dateRangeView.setContentOffset(year: 2015, month: 3)
+        dateRangeView.setContentOffset(year: 2016, month: 1)
         
         self.view.addSubview(upperView)
         self.dateRangeContainerView.addSubview(dateRangeView)
@@ -52,8 +52,8 @@ class ViewController: UIViewController, DateRangeDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func dateSelected(#start: Int, end: Int) {
-        println("Start: \(start) End:\(end)")
+    func dateSelected(start start: Int, end: Int) {
+        print("Start: \(start) End:\(end)")
         // Format 201503
         var selectedString : (String)
         if(start == end && start == 0) {
@@ -61,11 +61,11 @@ class ViewController: UIViewController, DateRangeDelegate {
         } else {
             let formatter = NSDateFormatter()
             let month1Index = (start % 100)
-            let month1: String = formatter.monthSymbols[month1Index - 1] as! String
+            let month1: String = formatter.monthSymbols[month1Index - 1] 
             selectedString = "\(month1) \((start-month1Index)/100)"
             if(start != end) {
                 let month2Index = (end % 100)
-                let month2: String = formatter.monthSymbols[month2Index - 1] as! String
+                let month2: String = formatter.monthSymbols[month2Index - 1] 
                 selectedString += " - \(month2) \((end-month2Index)/100)"
             }
         }
